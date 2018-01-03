@@ -35,7 +35,8 @@ public class GoodsController {
 	@RequestMapping("/list")
 	public String list(Model model,@RequestParam(required=false,defaultValue="1") int pageNO){
 		
-		logger.info("This is list goods page");
+		logger.info("This is list goods info page");
+		logger.error("This is list goods error page");
 		
 		
 		int size=5;
