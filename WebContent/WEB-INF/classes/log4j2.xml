@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN" monitorInterval="30">
+<Configuration status="error" monitorInterval="30">
     <Properties>
         <Property name="LOG_PATTERN">
             %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} --- [%15.15t] %-40.40c{1.} : %m%n%ex
@@ -11,13 +11,13 @@
         <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
             <PatternLayout pattern="${LOG_PATTERN}"/>
             
-            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <!--控制台只输出info及以上级别的信息-->
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
         
 		<!-- Rolling File Appender -->
 		<RollingFile name="FileAppender">
-            <!--文件只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <!--文件只输出error及以上级别的信息-->
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
             
 			<FileName>D:/Temp/mylog.log</FileName>
@@ -33,9 +33,11 @@
     </Appenders>
 
     <Loggers>
+    	<!-- 
         <Logger name="org.springframework" level="info" additivity="false"></Logger>
         <Logger name="org.mybatis" level="info"></Logger>
-
+		 -->
+		 
         <Root level="info">
             <AppenderRef ref="ConsoleAppender" />
             <AppenderRef ref="FileAppender"/>

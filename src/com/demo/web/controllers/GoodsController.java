@@ -15,11 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
-
-
 import com.demo.web.entities.Goods;
 import com.demo.web.services.GoodsService;
 
@@ -27,10 +22,6 @@ import com.demo.web.services.GoodsService;
 @RequestMapping("/goods")
 public class GoodsController {
 	
-	//private static final Logger logger = Logger.getLogger(GoodsController.class);
-	private static final Logger logger = LogManager.getLogger(GoodsController.class);
-
-	 
 	@Resource
 	GoodsService goodsService;
 	
@@ -39,9 +30,6 @@ public class GoodsController {
 	 */
 	@RequestMapping("/list")
 	public String list(Model model,@RequestParam(required=false,defaultValue="1") int pageNO){
-		logger.info("This is list goods info page");
-		logger.error("This is list goods error page");
-		
 		int size=5;
 		model.addAttribute("size",size);
 		model.addAttribute("pageNO",pageNO);
